@@ -15,6 +15,14 @@ class PuzzleImageWriter:
 
 		image = Image.open(self.background_file)
 		draw = ImageDraw.Draw(image)
+
+		font = ImageFont.truetype('DejaVuSans-Bold.ttf', size = 24)
+		color = 'rgb(0, 0, 0)'
+
+		num_pans = len(puzzle.pangrams)
+		text = '%d pangram%s' % (num_pans, 's' if num_pans > 1 else '')
+		draw.text((10, 10), text, fill = color, font = font)
+
 		font = ImageFont.truetype('DejaVuSans-Bold.ttf', size = 80)
 		color = 'rgb(0, 0, 0)'
 
