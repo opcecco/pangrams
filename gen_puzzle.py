@@ -7,7 +7,7 @@ from graphics import PuzzleImageWriter
 with open('words/full_wordlist.txt', 'r') as full_word_file, open('words/common_wordlist.txt', 'r') as common_word_file:
 	full = (line.strip() for line in full_word_file)
 	common = (line.strip() for line in common_word_file)
-	generator = PuzzleGenerator(full, common, puzzle_size = 9)
+	generator = PuzzleGenerator(full, common, puzzle_size = 7)
 
 puzzle = generator.generate()
 
