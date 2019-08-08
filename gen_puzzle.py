@@ -1,27 +1,25 @@
 #!/usr/bin/env python3
 
-import json
-from puzzle import PuzzleGenerator
-from graphics import PuzzleImageWriter
+# import json
+from puzzle import WordList
+# from graphics import PuzzleImageWriter
 
-with open('words/full_wordlist.txt', 'r') as full_word_file, open('words/common_wordlist.txt', 'r') as common_word_file:
-	full = (line.strip() for line in full_word_file)
-	common = (line.strip() for line in common_word_file)
-	generator = PuzzleGenerator(full, common, puzzle_size = 7)
+with open('words/common_wordlist.txt', 'r') as common_word_file:
+	common_wl = WordList(common_word_file, min_word_size = 4)
 
-puzzle = generator.generate()
+with open('words/full_wordlist.txt', 'r') as full_word_file:
+	full_wl = WordList(full_word_file, min_word_size = 4)
 
-# print('Puzzle:\n')
-# print(' %c %c \n%c %c %c\n %c %c ' % (*puzzle.letters[:3].upper(), puzzle.key_letter.upper(), *puzzle.letters[3:].upper()))
-# print('\nPangrams:\n')
-# print(', '.join(puzzle.pangrams))
-# print('\nSolutions:\n')
-# print(', '.join(puzzle.solutions))
+p = common_wl.make_puzzle(1, 6)
+print(p)
 
-print(puzzle)
+s = full_wl.solve_puzzle(p)
+print(s)
 
-with open('config.json', 'r') as config_file:
-	config = json.load(config_file)
+# print(puzzle)
 
-writer = PuzzleImageWriter(**config)
-writer.draw(puzzle, 'out.jpg')
+# with open('config.json', 'r') as config_file:
+	# config = json.load(config_file)
+
+# writer = PuzzleImageWriter(**config)
+# writer.draw(puzzle, 'out.jpg')
