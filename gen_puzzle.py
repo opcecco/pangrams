@@ -10,7 +10,7 @@ with open('words/common_wordlist.txt', 'r') as common_word_file:
 with open('words/full_wordlist.txt', 'r') as full_word_file:
 	full_wl = WordList(full_word_file, min_word_size = 4)
 
-with open('config.json', 'r') as config_file:
+with open('1-6-config.json', 'r') as config_file:
 	config = json.load(config_file)
 	writer = PuzzleImageWriter(**config)
 

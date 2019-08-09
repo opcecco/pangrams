@@ -1,0 +1,26 @@
+{
+	"background_file": "1-6-bg.png",
+
+	"key_letter_locs": [
+		[327, 338]
+	],
+
+	"general_letter_locs": [
+		[326, 127],
+		[510, 234],
+		[510, 444],
+		[326, 552],
+		[144, 444],
+		[144, 234]
+	],
+
+	"letter_font": "DejaVuSans-Bold.ttf",
+	"letter_font_size": 80,
+	"letter_font_color": "#000000",
+
+	"hint_font": "DejaVuSans-Bold.ttf",
+	"hint_font_size": 24,
+	"hint_font_color": "#000000",
+
+	"hint_loc": [10, 10]
+}

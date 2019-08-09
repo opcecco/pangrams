@@ -16,22 +16,22 @@ class PuzzleImageWriter:
 		image = Image.open(self.background_file)
 		draw = ImageDraw.Draw(image)
 
-		font = ImageFont.truetype('DejaVuSans-Bold.ttf', size = 24)
-		color = 'rgb(0, 0, 0)'
+		font = ImageFont.truetype(self.hint_font, size = self.hint_font_size)
+		color = self.hint_font_color
 
 		num_pans = len(solution.pangram_words)
 		text = '%d pangram%s' % (num_pans, 's' if num_pans > 1 else '')
-		draw.text((10, 10), text, fill = color, font = font)
+		draw.text(self.hint_loc, text, fill = color, font = font)
 
-		font = ImageFont.truetype('DejaVuSans-Bold.ttf', size = 80)
-		color = 'rgb(0, 0, 0)'
+		font = ImageFont.truetype(self.letter_font, size = self.letter_font_size)
+		color = self.letter_font_color
 
-		x, y = self.key_letter_loc
-		text = puzzle.key_letters[0].upper()
-		w, h = font.getsize(text)
-		draw.text((x - (w / 2), y - (h / 2)), text, fill = color, font = font)
+		for text, loc in zip(puzzle.key_letters.upper(), self.key_letter_locs):
+			x, y = loc
+			w, h = font.getsize(text)
+			draw.text((x - (w / 2), y - (h / 2)), text, fill = color, font = font)
 
-		for text, loc in zip(puzzle.general_letters.upper(), self.letter_locs):
+		for text, loc in zip(puzzle.general_letters.upper(), self.general_letter_locs):
 			x, y = loc
 			w, h = font.getsize(text)
 			draw.text((x - (w / 2), y - (h / 2)), text, fill = color, font = font)
