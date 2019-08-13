@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
 import json
-from puzzle import WordList
-from graphics import PuzzleImageWriter
+
+from puzzle import *
+from graphics import *
+
 
 with open('words/common_wordlist.txt', 'r') as common_word_file:
 	common_wl = WordList(common_word_file, min_word_size = 4)
