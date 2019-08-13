@@ -20,4 +20,4 @@ puz = common_wl.make_puzzle(1, 6)
 sol = full_wl.solve_puzzle(puz)
 
 print(puz, sol)
-writer.draw(puz, sol, 'out.jpg')
+writer.draw(puz, sol, '%d%s.jpg' % (len(sol.pangram_words), puz.key_letters + puz.general_letters))

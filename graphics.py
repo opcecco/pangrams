@@ -16,13 +16,6 @@ class PuzzleImageWriter:
 		image = Image.open(self.background_file)
 		draw = ImageDraw.Draw(image)
 
-		font = ImageFont.truetype(self.hint_font, size = self.hint_font_size)
-		color = self.hint_font_color
-
-		num_pans = len(solution.pangram_words)
-		text = '%d pangram%s' % (num_pans, 's' if num_pans > 1 else '')
-		draw.text(self.hint_loc, text, fill = color, font = font)
-
 		font = ImageFont.truetype(self.letter_font, size = self.letter_font_size)
 		color = self.letter_font_color
 
