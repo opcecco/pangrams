@@ -3,6 +3,7 @@
 from string import ascii_lowercase
 from collections import namedtuple
 from random import choice, shuffle
+from functools import lru_cache
 
 
 Word = namedtuple('Word', ['string', 'letter_set'])
@@ -26,10 +27,15 @@ class WordList:
 		]
 
 
+	@lru_cache()
+	def get_puzzle_words(self, puzzle_size):
+
+		return [word for word in self.words if len(word.letter_set) == puzzle_size]
+
+
 	def make_puzzle(self, num_key_letters, num_general_letters):
 
-		puzzle_size = num_key_letters + num_general_letters
-		seed_word = choice([word for word in self.words if len(word.letter_set) == puzzle_size])
+		seed_word = choice(self.get_puzzle_words(num_key_letters + num_general_letters))
 
 		puzzle_letters = list(seed_word.letter_set)
 		shuffle(puzzle_letters)
