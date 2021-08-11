@@ -4,11 +4,43 @@ from string import ascii_lowercase
 from collections import namedtuple
 from random import choice, shuffle
 from functools import lru_cache
+import json
 
 
-Word = namedtuple('Word', ['string', 'letter_set'])
-Puzzle = namedtuple('Puzzle', ['key_letters', 'general_letters'])
-Solution = namedtuple('Solution', ['pangram_words', 'general_words'])
+class Word:
+
+	def __init__(self, string, letter_set):
+
+		self.string = string
+		self.letter_set = letter_set
+
+	def __repr__(self):
+
+		return json.dumps({'string': self.string, 'letter_set': list(self.letter_set)})
+
+
+class Puzzle:
+
+	def __init__(self, key_letters, general_letters):
+
+		self.key_letters = key_letters
+		self.general_letters = general_letters
+
+	def __repr__(self):
+
+		return json.dumps({'key_letters': list(self.key_letters), 'general_letters': list(self.general_letters)})
+
+
+class Solution:
+
+	def __init__(self, pangram_words, general_words):
+
+		self.pangram_words = pangram_words
+		self.general_words = general_words
+
+	def __repr__(self):
+
+		return json.dumps({'pangram_words': sorted(list(self.pangram_words)), 'general_words': sorted(list(self.general_words))})
 
 
 class WordList:
